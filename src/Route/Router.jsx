@@ -10,6 +10,9 @@ import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import UpdateProfile from "../components/UpdateProfile/UpdateProfile";
 import Appointment from "../pages/Appointment/Appointment";
+import Home from "../Pages/Home/Home";
+import Login from "../Pages/Login/Login";
+import Registration from "../Pages/Registration/Registration";
 
 const router = createBrowserRouter(
     
@@ -34,14 +37,14 @@ const router = createBrowserRouter(
                 path:'/registration',
                 element: <PrivateRoutes2><Registration></Registration></PrivateRoutes2>,
             },
-            {
-                path:'/profile',
-                element: <PrivateRoutes><Profile/></PrivateRoutes>,
-            },
-            {
-                path:'/updateprofile',
-                element: <PrivateRoutes><UpdateProfile/></PrivateRoutes>,
-            },
+            // {
+            //     path:'/profile',
+            //     element: <PrivateRoutes><Profile/></PrivateRoutes>,
+            // },
+            // {
+            //     path:'/updateprofile',
+            //     element: <PrivateRoutes><UpdateProfile/></PrivateRoutes>,
+            // },
             
        
         ]
