@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './toggle.css';
+import Login from '../Login/Login';
+import Registration from '../Registration/Registration';
 
 const Home = () => {
   const [isSignup, setIsSignup] = useState(false);
@@ -11,35 +13,11 @@ const Home = () => {
   return (
     <div className={`container ${isSignup ? 'change' : ''}`}>
       <div className="forms-container">
-        <div className="form-control signup-form">
-          <form action="#">
-            <h2>Signup</h2>
-            <input type="text" placeholder="Username" required />
-            <input type="email" placeholder="Email" required />
-            <input type="password" placeholder="Password" required />
-            <input type="password" placeholder="Confirm password" required />
-            <button type="submit">Signup</button>
-          </form>
-          <span>or signup with</span>
-          <div className="socials">
-            <i className="fab fa-facebook-f"></i>
-            <i className="fab fa-google-plus-g"></i>
-            <i className="fab fa-linkedin-in"></i>
-          </div>
+        <div className="form-control signup-form ">
+            <Registration/>
         </div>
         <div className="form-control signin-form">
-          <form action="#">
-            <h2>Signin</h2>
-            <input type="text" placeholder="Username" required />
-            <input type="password" placeholder="Password" required />
-            <button type="submit">Signin</button>
-          </form>
-          <span>or signin with</span>
-          <div className="socials">
-            <i className="fab fa-facebook-f"></i>
-            <i className="fab fa-google-plus-g"></i>
-            <i className="fab fa-linkedin-in"></i>
-          </div>
+            <Login/>
         </div>
       </div>
       <div className="intros-container">
@@ -49,7 +27,7 @@ const Home = () => {
             <p>
               Welcome back! We are so happy to have you here. It's great to see you again. We hope you had a safe and enjoyable time away.
             </p>
-            <button id="signup-btn" onClick={toggleForms}>No account yet? Signup.</button>
+            <button id="signup-btn" onClick={toggleForms}>No account yet? Register Now.</button>
           </div>
         </div>
         <div className="intro-control signup-intro">
@@ -58,7 +36,7 @@ const Home = () => {
             <p>
               We are so excited to have you here. If you haven't already, create an account to get access to exclusive offers, rewards, and discounts.
             </p>
-            <button id="signin-btn" onClick={toggleForms}>Already have an account? Signin.</button>
+            <button id="signin-btn" onClick={toggleForms}>Already have an account? Log in .</button>
           </div>
         </div>
       </div>
