@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import lottie from "lottie-web";
 import { defineElement } from "@lordicon/element";
-
+import './loader.css';
 import Swal from "sweetalert2";
 
 
@@ -18,6 +18,7 @@ const Nav = () => {
   const { user, signOutUser, loading } = useContext(AuthContext);
   const [showUserDetails, setShowUserDetails] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
 
 //   useEffect(() => {
 //     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -42,16 +43,7 @@ const Nav = () => {
               View Profile
             </Link>
           </li>
-          <li>
-            <Link to="/updateprofile" onClick={() => setIsDropdownOpen(false)}>
-              Update Profile
-            </Link>
-          </li>
-          <li>
-            <Link to="/Appointment/0" onClick={() => setIsDropdownOpen(false)}>
-              Appointment
-            </Link>
-          </li>
+          
         </>
       ) : (<></>
         // <li>
@@ -97,6 +89,18 @@ const Nav = () => {
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+
+  if(loading)
+    {
+      <div className="loading-wave">
+          <div className="loading-bar"></div>
+          <div className="loading-bar"></div>
+          <div className="loading-bar"></div>
+          <div className="loading-bar"></div>
+      </div>
+
+    }
+
 
   return (
     <div>
