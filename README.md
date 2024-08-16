@@ -61,4 +61,4 @@ STYLE ROOM is a full-stack single-page web application built with the MERN stack
 1. Clone the repository:
    ```bash
    git clone https://github.com/mrbalok019/style-room.git
-   cd styleroom
+   cd style-room

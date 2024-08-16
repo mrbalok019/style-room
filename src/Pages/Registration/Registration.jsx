@@ -86,7 +86,7 @@ const Registration = () => {
         <div>   
             
            
-            <div className='my-10 p-4 h-auto'>
+            <div className=' p-4 max-h-max'>
             <HelmetProvider context={helmetContext}>
                 <Helmet> 
                  <title>Registration</title>  
@@ -94,9 +94,7 @@ const Registration = () => {
             </HelmetProvider>
                 <div className="mx-auto w-full max-w-md p-4 rounded-md shadow sm:p-8 dark:bg-gray-50 dark:text-gray-800">
                     <h2 className="mb-3 text-3xl font-semibold text-center">Register NOW!</h2>
-                    <p className="text-sm text-center dark:text-gray-600">Already have an account?
-                        <Link to='/login' rel="noopener noreferrer" className="focus:underline hover:underline text-primary">Login here</Link>
-                    </p>
+                  
 
                     <form noValidate="" action="" className="space-y-8" onSubmit={registerFormHandler}>
                         <div className="space-y-4">
@@ -113,8 +111,8 @@ const Registration = () => {
                                 <input type="email" name="email" placeholder="mr.balok019@gmail.com" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" required />
                             </div>
                             <div className="space-y-2">
-                                <div className="flex justify-between">
-                                    <label htmlFor="password" className="text-sm">Password</label>
+                                <div className="flex justify-between ">
+                                    <label htmlFor="password" className="text-sm ">Password</label>
 
                                 </div>
                                 <div className='relative'>

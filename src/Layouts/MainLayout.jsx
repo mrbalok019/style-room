@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import {Outlet} from 'react-router-dom'
 
 import { AuthContext } from '../provider/AuthProvider';
+import Footer from '../Components/Footer/Footer';
 
 const MainLayout = () => {
     const {loading}=useContext(AuthContext);
@@ -24,7 +25,7 @@ const MainLayout = () => {
                 <Outlet></Outlet>
                
             </div> 
-            {/* <Footer ></Footer> */}
+            <Footer ></Footer>
         </div>
     );
 };
