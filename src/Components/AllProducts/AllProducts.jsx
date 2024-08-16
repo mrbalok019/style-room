@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FaStar } from 'react-icons/fa';
+import { FaMagnifyingGlass } from 'react-icons/fa6';
+import { ImCross } from 'react-icons/im';
 
 const AllProducts = () => {
     const [products, setProducts] = useState([]);
@@ -7,10 +9,14 @@ const AllProducts = () => {
     const [error, setError] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
+    const [categoryFilter, setCategoryFilter] = useState(null);
+    const [searchData, setSearchData] = useState('');
+    const [sortField, setSortField] = useState('creationDate');
+    const [sortOrder, setSortOrder] = useState('desc'); // default to descending
 
-    const fetchProducts = (page) => {
+    const fetchProducts = (page, sortField, sortOrder, searchData) => {
         setLoading(true);
-        fetch(`http://localhost:5000/products?page=${page}&limit=9`)
+        fetch(`http://localhost:5000/products?page=${page}&limit=9&sortField=${sortField}&sortOrder=${sortOrder}&search=${searchData}`)
             .then(res => {
                 if (!res.ok) {
                     throw new Error('Network response was not ok');
@@ -30,8 +36,8 @@ const AllProducts = () => {
     };
 
     useEffect(() => {
-        fetchProducts(currentPage);
-    }, [currentPage]);
+        fetchProducts(currentPage, sortField, sortOrder, searchData);
+    }, [currentPage, sortField, sortOrder, searchData]);
 
     const handlePrevPage = () => {
         if (currentPage > 1) {
@@ -45,6 +51,19 @@ const AllProducts = () => {
         }
     };
 
+    const handleSortChange = (field) => {
+        setSortField(field);
+        setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+        setCurrentPage(1); // reset to first page
+    };
+
+    const searchHandler = (e) => {
+        e.preventDefault();
+        const searchValue = e.target.search.value.trim();
+        setSearchData(searchValue);
+        setCurrentPage(1); // reset to first page
+    };
+
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -55,6 +74,49 @@ const AllProducts = () => {
 
     return (
         <div>
+
+            <div className='flex flex-col lg:flex-row justify-between mb-6'>
+
+                {/* Sorting field */}
+                <div className="dropdown">
+                    <div 
+                        tabIndex={0} 
+                        role="button" 
+                        className="btn m-1 btn-primary text-white"
+                    >
+                        Sort By
+                    </div>
+                    <ul tabIndex={0} className="text-black dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                        <li><a onClick={() => handleSortChange('creationDate')}>Date Added</a></li>
+                        <li><a onClick={() => handleSortChange('price')}>Price</a></li>
+                    </ul>
+                </div>
+
+                {/* Searching */}
+                <div>
+                    <form className='flex flex-row gap-3 ' onSubmit={searchHandler}>
+                        <label className='text-base lg:text-lg font-medium'>Search </label>
+                        <div className='flex flex-row gap-2'>
+                            <input 
+                                type="text" 
+                                name='search' 
+                                className='rounded-xl border-2 border-blue-800' 
+                                placeholder='   Product name or brand' 
+                            />
+                            <button type='submit'> 
+                                <FaMagnifyingGlass />   
+                            </button>
+                            <button 
+                                type='button' 
+                                onClick={() => { setSearchData(''); fetchProducts(currentPage, sortField, sortOrder, ''); }}
+                            >
+                                <ImCross /> 
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-full'>
                 {products.map(product => (
                     <div key={product._id} className="card card-compact w-auto bg-base-100 shadow-xl text-left">
@@ -62,7 +124,7 @@ const AllProducts = () => {
                             <img src={product.productImage} alt={product._id} className="object-cover w-full h-full" />
                         </figure>
                         <div className="card-body">
-                            <h2 className="card-title text-secondary ">
+                            <h2 className="card-title text-secondary">
                                 {product.productName}
                                 <div className="badge badge-secondary"><FaStar /> {product.ratings} </div>
                             </h2>
