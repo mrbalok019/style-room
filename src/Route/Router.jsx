@@ -12,6 +12,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
+import Profile from "../Pages/Profile/Profile";
 
 const router = createBrowserRouter(
     
@@ -36,10 +37,10 @@ const router = createBrowserRouter(
                 path:'/registration',
                 element: <PrivateRoutes2><Registration></Registration></PrivateRoutes2>,
             },
-            // {
-            //     path:'/profile',
-            //     element: <PrivateRoutes><Profile/></PrivateRoutes>,
-            // },
+            {
+                path:'/profile',
+                element: <PrivateRoutes><Profile/></PrivateRoutes>,
+            },
             // {
             //     path:'/updateprofile',
             //     element: <PrivateRoutes><UpdateProfile/></PrivateRoutes>,

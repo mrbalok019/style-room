@@ -3,6 +3,7 @@ import {Outlet} from 'react-router-dom'
 
 import { AuthContext } from '../provider/AuthProvider';
 import Footer from '../Components/Footer/Footer';
+import Nav from '../Components/Nav/Nav';
 
 const MainLayout = () => {
     const {loading}=useContext(AuthContext);
@@ -21,7 +22,7 @@ const MainLayout = () => {
         <div>
           
             <div className='max-w-6xl mx-auto'>
-                   {/* <Nav></Nav> */}
+                   <Nav></Nav>
                 <Outlet></Outlet>
                
             </div> 
