@@ -2,14 +2,13 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from '../Layouts/MainLayout'
 
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
-import Profile from "../pages/Profile/Profile";
+
 import PrivateRoutes2 from "../PrivateRoutes/PrivateRoutes2";
 import ErrorPage from "../components/Error/ErrorPage";
-import PlotDetails from "../pages/Home/plots/PlotDetails";
+
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
-import UpdateProfile from "../components/UpdateProfile/UpdateProfile";
-import Appointment from "../pages/Appointment/Appointment";
+
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
