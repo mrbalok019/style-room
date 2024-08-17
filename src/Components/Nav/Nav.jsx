@@ -142,14 +142,14 @@ const Nav = () => {
             <Link to="/">
               {" "}
               <img
-                className="lg:w-12 lg:h-12 w-10 h-10"
+                className="hidden lg:flex lg:w-12 lg:h-12 w-10 h-10"
                 src="/srlogo.png"
                 alt=""
               />{" "}
             </Link>
             <Link
               to="/"
-              className="btn btn-ghost lg:text-lg font-bold max-[450px]:text-2xl text-black  p-0"
+              className="btn btn-ghost text-sm lg:text-lg font-bold text-black  p-0"
             >
               STYLE <span className="text-blue-800 font-bold">ROOM</span>
             </Link>

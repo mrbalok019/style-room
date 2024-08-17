@@ -18,7 +18,7 @@ const AllProducts = () => {
   const fetchProducts = (page, sortField, sortOrder, searchData) => {
     setLoading(true);
     fetch(
-      `http://localhost:5000/products?page=${page}&limit=6&sortField=${sortField}&sortOrder=${sortOrder}&search=${searchData}`
+      `https://style-room-server-side.vercel.app/products?page=${page}&limit=6&sortField=${sortField}&sortOrder=${sortOrder}&search=${searchData}`
     )
       .then((res) => {
         if (!res.ok) {
@@ -90,7 +90,7 @@ const AllProducts = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="text-black dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+                className="text-black dropdown-content menu z-[20] glass bg-blue-400 rounded-box z-[1] w-52 p-2 shadow"
               >
                 <li>
                   <a onClick={() => handleSortChange("creationDate")}>
@@ -98,14 +98,16 @@ const AllProducts = () => {
                   </a>
                 </li>
                 <li>
-                  <a onClick={() => handleSortChange("price")}>Price</a>
+                  <a onClick={() => handleSortChange("price")}>
+                    Price
+                    </a>
                 </li>
               </ul>
             </div>
 
             {/* Searching */}
             <div>
-              <form className="flex flex-row gap-3 " onSubmit={searchHandler}>
+              <form className="flex flex-col lg:flex-row gap-3 " onSubmit={searchHandler}>
                 <label className="text-base lg:text-lg font-medium">
                   Search{" "}
                 </label>
@@ -193,7 +195,7 @@ const AllProducts = () => {
           </div>
 
           {/* pagination  */}
-          <div className="flex justify-center items-center mt-6">
+          <div className="flex flex-wrap justify-center items-center mt-6">
             <button
               onClick={handlePrevPage}
               disabled={currentPage === 1}

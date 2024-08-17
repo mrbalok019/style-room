@@ -1,4 +1,5 @@
 # STYLE ROOM
+## Live Link : https://styleroom.netlify.app
 
 ## Overview
 STYLE ROOM is a full-stack single-page web application built with the MERN stack (MongoDB, Express.js, React.js, Node.js) that allows users to search, filter, categorize, and sort products. The application includes authentication via Google and Email/Password using Firebase, ensuring a secure and personalized user experience.

@@ -34,7 +34,7 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <form className=''>
+                    <form className='hidden lg:flex'>
                         <h6 className="footer-title text-center">Newsletter</h6>
                         <fieldset className="form-control w-80 mx-auto">
                             <label className="label mx-auto">
